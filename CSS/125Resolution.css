@@ -26,11 +26,11 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 21vh;
+    height: 29vh;
     border-radius: 10px;
     width: 19vw;
     background-color:var(--secondarycolor);
-    top: 125vh;
+    top: 119vh;
     right: 5.2vw;
     border: none; 
     font-size: 1.2vw;
