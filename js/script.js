@@ -19,6 +19,8 @@ function displayStats(statevar) {
             var statecode;
             var total_confirmedhover;
             var total_activehover;
+            var total_recoverhover;
+            var total_deathhover;
             var hoverstatename;
             var i;
             for (i = 1; i < data.statewise.length; i++) {
@@ -28,9 +30,13 @@ function displayStats(statevar) {
                 if (statecode == statevar) {
                     total_confirmedhover = data.statewise[i].confirmed
                     total_activehover=data.statewise[i].active
+                    total_recoverhover=data.statewise[i].recovered
+                    total_deathhover=data.statewise[i].deaths
                     document.getElementById("hoverheading").innerHTML = hoverstatename;
                     document.getElementById("hovercount").innerHTML = "Confirmed: " + total_confirmedhover;
                     document.getElementById("hoveractive").innerHTML = "Active: " + total_activehover;
+                    document.getElementById("hoverrecovered").innerHTML = "Recovered: " + total_recoverhover;
+                    document.getElementById("hoverdeath").innerHTML = "Death: " + total_deathhover;
                 }
             }
         })
