@@ -98,6 +98,7 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 .itemz2{
     padding: 10px 10px;
+    padding-right: 0px;
 }
 
 /* TWITTER FEED */
@@ -365,7 +366,7 @@ text-align: center;
 .mapfile{
     position: absolute;
     right: 4vw;
-    top: 118vh;
+    top: 123vh;
     margin:10px 10px;
     width:40%;
     
@@ -484,11 +485,11 @@ text-align: center;
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 21vh;
+    height: 29vh;
     border-radius: 10px;
     width: 19vw;
     background-color:var(--secondarycolor);
-    top: 120.2vh;
+    top: 117.2vh;
     right: 6.2vw;
     border: none; 
     font-size: 1.2vw;
@@ -510,6 +511,16 @@ text-align: center;
     padding: 0.2vw;
     color: #007bff;
 
+}
+#hoverrecovered{
+    font-weight: lighter;
+    padding: 0.2vw;
+    color:rgb(3, 236, 3);
+}
+#hoverdeath{
+    font-weight: lighter;
+    padding: 0.2vw;
+    color:rgb(146, 145, 145);
 }
 .precautions{
     width:100vw;
