@@ -1,25 +1,15 @@
-
-function displayName(stateid) {
-
-    document.getElementById("statebox").style.visibility = "visible"
-    displayStats(stateid)
-
-}
-function stopDisplay() {
-
-    document.getElementById("statebox").style.visibility = "hidden"
-}
 function displayStats(statevar) {
-
+    
     $(document).ready(function () {
         var url = "https://api.covid19india.org/data.json"
-
+        
         $.getJSON(url, function (data) {
+            console.log(data)
             console.log(data)
             var statecode;
             var total_confirmedhover;
             var total_activehover;
-            var total_recoverhover;
+            var total_recoveredhover;
             var total_deathhover;
             var hoverstatename;
             var i;
@@ -28,19 +18,35 @@ function displayStats(statevar) {
                 hoverstatename = data.statewise[i].state
                 statecode = data.statewise[i].statecode
                 if (statecode == statevar) {
-                    total_confirmedhover = data.statewise[i].confirmed
-                    total_activehover=data.statewise[i].active
-                    total_recoverhover=data.statewise[i].recovered
-                    total_deathhover=data.statewise[i].deaths
+                    total_confirmedhover = nfObject.format(data.statewise[i].confirmed)
+                    total_activehover=nfObject.format(data.statewise[i].active)
+                    total_recoveredhover = nfObject.format(data.statewise[i].recovered)
+                    total_deathhover=nfObject.format(data.statewise[i].deaths)
                     document.getElementById("hoverheading").innerHTML = hoverstatename;
                     document.getElementById("hovercount").innerHTML = "Confirmed: " + total_confirmedhover;
                     document.getElementById("hoveractive").innerHTML = "Active: " + total_activehover;
-                    document.getElementById("hoverrecovered").innerHTML = "Recovered: " + total_recoverhover;
-                    document.getElementById("hoverdeath").innerHTML = "Death: " + total_deathhover;
+                    document.getElementById("hoverrecovered").innerHTML = "Recovered: " + total_recoveredhover;
+                    document.getElementById("hoverdeath").innerHTML = "Deceased: " + total_deathhover;
                 }
             }
         })
     })
+}
+function displayName(stateid) {
+    
+    document.getElementById("statebox").style.visibility = "visible"
+    $(document).mousemove(function(e) {
+        $('#statebox').css('top',e.pageY-$('#statebox').height()-30);
+        $('#statebox').css('left',e.pageX-($('#statebox').width())/2);
+        
+    })
+   
+    displayStats(stateid)
+
+}
+function stopDisplay() {
+
+    document.getElementById("statebox").style.visibility = "hidden"
 }
 $(document).ready(function () {
     var url = "https://api.covid19india.org/data.json"
@@ -123,9 +129,14 @@ $(document).ready(function () {
 
         $("#totalfig2").append(worldtotal)
         $("#activefig2").append(worldactive)
-        $("#recoveredfig2").append(worldrecovered)
+        if (worldrecovered == 0){
+            $("#recoveredfig2").append("NA")
+        }
+        else
+        {
+            $("#recoveredfig2").append(worldrecovered)
+        }
         $("#deathfig2").append(worlddeath)
            
-        
         })
 })
